@@ -12,6 +12,15 @@ class StudentController extends Controller
      */
     public function index()
     {
+        $students = Student::latest()->get();
+        return view('student.index', compact('students'));
+    }
+
+    /**
+     * alumini.
+     */
+    public function alumini()
+    {
         //
     }
 
@@ -20,7 +29,15 @@ class StudentController extends Controller
      */
     public function create()
     {
-        //
+        $provinces = [];
+        $academics = [];
+        $grades = [];
+
+        return view('student.create', [
+            'provinces' => $provinces,
+            'academics' => $academics,
+            'grades' => $grades
+        ]);
     }
 
     /**

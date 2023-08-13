@@ -13,7 +13,7 @@
                     <!-- Forgot Password -->
                     <div class="app-brand justify-content-center mt-5">
                         <a href="/" class="app-brand-link gap-2">
-                            <span class="app-brand-text demo text-heading fw-semibold">rica</span>
+                            <span class="app-brand-text demo text-heading fw-semibold">lica ms v1</span>
                         </a>
                     </div>
                     <!-- /Logo -->
@@ -26,6 +26,9 @@
                                 <input type="text" class="form-control" id="email" name="email"
                                     placeholder="Enter your email" autofocus />
                                 <label>Email</label>
+                                @error('email')
+                                    <p class="text-danger">{{ $message }}</p>
+                                @enderror
                             </div>
                             <button class="btn btn-primary d-grid w-100">Send Reset Link</button>
                         </form>
@@ -38,14 +41,10 @@
                     </div>
                 </div>
                 <!-- /Forgot Password -->
-                <img src="../../assets/img/illustrations/tree-3.png" alt="auth-tree"
-                    class="authentication-image-object-left d-none d-lg-block" />
                 <img src="../../assets/img/illustrations/auth-basic-mask-light.png"
                     class="authentication-image d-none d-lg-block" alt="triangle-bg"
                     data-app-light-img="illustrations/auth-basic-mask-light.png"
                     data-app-dark-img="illustrations/auth-basic-mask-dark.png" />
-                <img src="../../assets/img/illustrations/tree.png" alt="auth-tree"
-                    class="authentication-image-object-right d-none d-lg-block" />
             </div>
         </div>
     </div>

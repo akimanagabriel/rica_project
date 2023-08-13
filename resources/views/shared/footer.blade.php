@@ -2,22 +2,15 @@
     <div class="container-xxl">
         <div class="footer-container d-flex align-items-center justify-content-between py-3 flex-md-row flex-column">
             <div class="text-body mb-2 mb-md-0">
+                LICA MANAGEMENT SYSTEM V1
                 ©
                 <script>
                     document.write(new Date().getFullYear());
                 </script>
-                , made with <span class="text-danger"><i class="tf-icons mdi mdi-heart"></i></span> by
-                <a href="https://themeselection.com" target="_blank" class="footer-link fw-medium">ThemeSelection</a>
+                , Life International Christian Academy
             </div>
-            <div class="d-none d-lg-inline-block">
-                <a href="https://themeselection.com/license/" class="footer-link me-3" target="_blank">License</a>
-                <a href="https://themeselection.com/" target="_blank" class="footer-link me-3">More Themes</a>
-
-                <a href="https://demos.themeselection.com/materio-bootstrap-html-admin-template/documentation/"
-                    target="_blank" class="footer-link me-3">Documentation</a>
-
-                <a href="https://themeselection.com/support/" target="_blank"
-                    class="footer-link d-none d-sm-inline-block">Support</a>
+            <div class="d-lg-inline-block">
+                Developed by Jean D'Amour (<a href="tel:+250788672782" class="fw-semibold">+250 788 672 782</a>)
             </div>
         </div>
     </div>

@@ -8,12 +8,12 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>Dashboard - eCommerce | Materio - Bootstrap Material Design Admin Template</title>
+    <title>@yield('title') | LICA MS V1</title>
 
     <meta name="description" content="" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="../../assets/img/favicon/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('assets/logo/lica.jpg') }}" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -71,8 +71,20 @@
                 <!-- Content wrapper -->
                 <div class="content-wrapper">
 
+
+
                     <!-- Content -->
-                    @yield('content')
+                    <main class="container-fluid">
+                        {{-- header of each page --}}
+                        <div class="mt-2">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h6 class="text-uppercase">@yield('pageTitle')</h6>
+                                <p>@currentPath</p>
+                            </div>
+                        </div>
+
+                        @yield('content')
+                    </main>
                     <!-- / Content -->
 
                     <!-- Footer -->

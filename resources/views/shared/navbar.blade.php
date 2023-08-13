@@ -387,8 +387,8 @@
                                     </div>
                                 </div>
                                 <div class="flex-grow-1">
-                                    <h6 class="mb-0">John Doe</h6>
-                                    <small class="text-muted">Admin</small>
+                                    <h6 class="mb-0">{{ Auth::user()->username }}</h6>
+                                    <small class="text-muted">{{ Auth::user()->email }}</small>
                                 </div>
                             </div>
                         </a>
@@ -399,54 +399,23 @@
                     <li>
                         <a class="dropdown-item" href="pages-profile-user.html">
                             <i class="mdi mdi-account-outline me-1 mdi-20px"></i>
-                            <span class="align-middle">My Profile</span>
+                            <span class="align-middle">My Account</span>
                         </a>
                     </li>
-                    <li>
-                        <a class="dropdown-item" href="pages-account-settings-account.html">
-                            <i class="mdi mdi-cog-outline me-1 mdi-20px"></i>
-                            <span class="align-middle">Settings</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="pages-account-settings-billing.html">
-                            <span class="d-flex align-items-center align-middle">
-                                <i class="flex-shrink-0 mdi mdi-credit-card-outline me-1 mdi-20px"></i>
-                                <span class="flex-grow-1 align-middle ms-1">Billing</span>
-                                <span
-                                    class="flex-shrink-0 badge badge-center rounded-pill bg-danger w-px-20 h-px-20">4</span>
-                            </span>
-                        </a>
-                    </li>
+                    
                     <li>
                         <div class="dropdown-divider my-1"></div>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="pages-help-center-landing.html">
-                            <i class="mdi mdi-lifebuoy me-1 mdi-20px"></i>
-                            <span class="align-middle">Help</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="pages-faq.html">
-                            <i class="mdi mdi-help-circle-outline me-1 mdi-20px"></i>
-                            <span class="align-middle">FAQ</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="pages-pricing.html">
-                            <i class="mdi mdi-currency-usd me-1 mdi-20px"></i>
-                            <span class="align-middle">Pricing</span>
-                        </a>
-                    </li>
-                    <li>
-                        <div class="dropdown-divider my-1"></div>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="auth-login-cover.html" target="_blank">
-                            <i class="mdi mdi-logout me-1 mdi-20px"></i>
-                            <span class="align-middle">Log Out</span>
-                        </a>
+                        <form action="{{ route('logout') }}" method="post">
+                            <div>
+                                @csrf
+                                <button class="dropdown-item">
+                                    <i class="mdi mdi-logout me-1 mdi-20px"></i>
+                                    <span class="align-middle">Log Out</span>
+                                </button>
+                            </div>
+                        </form>
                     </li>
                 </ul>
             </li>

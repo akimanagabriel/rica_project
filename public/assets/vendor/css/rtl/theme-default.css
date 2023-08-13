@@ -1304,7 +1304,7 @@ li.ui-timepicker-selected,
   border-color: #fff !important;
 }
 .bg-menu-theme .menu-item.active > .menu-link:not(.menu-toggle) {
-  background: linear-gradient(270deg, #9055fd 0%, #c4a5fe 100%);
+  background: var(--bs-primary);
 }
 .bg-menu-theme.menu-horizontal .menu-sub > .menu-item.active > .menu-link:not(.menu-toggle), .bg-menu-theme.menu-horizontal .menu-sub > .menu-item.active > .menu-link:not(.menu-toggle)::before {
   background: #f2ebff;
