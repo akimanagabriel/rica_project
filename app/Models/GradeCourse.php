@@ -9,6 +9,7 @@ class GradeCourse extends Model
 {
     use HasFactory;
 
+    protected $table = "gradecourse";
     protected $fillable = [
         'gid','cid'
     ];

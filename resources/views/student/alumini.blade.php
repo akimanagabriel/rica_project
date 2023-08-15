@@ -95,4 +95,5 @@
             </table>
         @endif
     </div>
+    @include('student.countryJs')
 @endsection

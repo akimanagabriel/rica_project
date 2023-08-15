@@ -39,7 +39,7 @@
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/typeahead-js/typeahead.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/apex-charts/apex-charts.css') }}" />
-   
+
     {{-- data tables --}}
     <link rel="stylesheet" href="../../assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css" />
     <link rel="stylesheet" href="../../assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css" />
@@ -62,6 +62,10 @@
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
+    {{-- data tables --}}
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+
 </head>
 
 <body>
@@ -143,8 +147,15 @@
     <!-- Page JS -->
     <script src="{{ asset('assets/js/dashboards-crm.js') }}"></script>
 
-    
-    
+
+    {{-- data tables --}}
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+        $('table').dataTable({
+            paginate: true,
+        });
+    </script>
 
 </body>
 

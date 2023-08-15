@@ -2,18 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Course;
+use App\Models\User;
 use Illuminate\Http\Request;
-
-class CourseController extends Controller
+use Spatie\Permission\Models\Role;
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $courses = Course::orderBy('id', 'DESC')->get();
-        return view('course.subjects', compact('courses'));
+        $roles = Role::orderBy('name', 'asc')->get();
+        $users = User::latest()->get();
+        return view('user.users', compact('users','roles'));
     }
 
     /**
@@ -35,7 +36,7 @@ class CourseController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Course $course)
+    public function show(string $id)
     {
         //
     }
@@ -43,7 +44,7 @@ class CourseController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Course $course)
+    public function edit(string $id)
     {
         //
     }
@@ -51,7 +52,7 @@ class CourseController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Course $course)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -59,7 +60,7 @@ class CourseController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Course $course)
+    public function destroy(string $id)
     {
         //
     }

@@ -142,28 +142,28 @@
             </a>
 
             <ul class="menu-sub">
-                <li class="menu-item">
+                <li class="menu-item  {{ Request::routeIs('supplier.index') ? 'active' : '' }}">
                     <a href="{{ route('supplier.index') }}" class="menu-link">
                         <div data-i18n="Pace Supplier">Pace Supplier</div>
                     </a>
                 </li>
-                <li class="menu-item">
-                    <a href="app-academy-course.html" class="menu-link">
+                <li class="menu-item  {{ Request::routeIs('subject.index') ? 'active' : '' }}">
+                    <a href="{{ route('subject.index') }}" class="menu-link">
                         <div data-i18n="Subject">Subject</div>
                     </a>
                 </li>
-                <li class="menu-item">
-                    <a href="app-academy-course-details.html" class="menu-link">
+                <li class="menu-item   {{ Request::routeIs('grade.index') ? 'active' : '' }}">
+                    <a href="{{ route('grade.index') }}" class="menu-link">
                         <div data-i18n="Grades">Grades</div>
                     </a>
                 </li>
-                <li class="menu-item">
-                    <a href="app-academy-course-details.html" class="menu-link">
+                <li class="menu-item {{ Request::routeIs('learning.index') ? 'active' : '' }}">
+                    <a href="{{ route('learning.index') }}" class="menu-link">
                         <div data-i18n="Learning Center">Learning Center</div>
                     </a>
                 </li>
-                <li class="menu-item">
-                    <a href="app-academy-course-details.html" class="menu-link">
+                <li class="menu-item {{ Request::routeIs('user.index') ? 'active' : '' }}">
+                    <a href="{{ route('user.index') }}" class="menu-link">
                         <div data-i18n="User List">User List</div>
                     </a>
                 </li>

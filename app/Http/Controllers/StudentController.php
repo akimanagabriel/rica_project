@@ -15,8 +15,11 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students = Student::where('status', '1')->orderBy('grade', 'asc')->orderBy('name', 'asc')->get();
-        return view('student.index', compact('students'));
+        $provinces = Location::select('province')->groupBy('province')->get();
+        $grades = Grad::orderBy('id', 'asc')->get();
+        $academics = Academic::orderBy('year', 'asc')->get();
+        $students = Student::where('status', '1')->latest()->get();
+        return view('student.index', compact('students', 'provinces', 'academics', 'grades'));
     }
 
     /**
@@ -24,8 +27,12 @@ class StudentController extends Controller
      */
     public function alumini()
     {
+        $provinces = Location::select('province')->groupBy('province')->get();
+        $grades = Grad::orderBy('id', 'asc')->get();
+        $academics = Academic::orderBy('year', 'asc')->get();
         $students = Student::where('status', '0')->orderBy('grade', 'asc')->orderBy('name', 'asc')->get();
-        return view('student.alumini', compact('students'));
+
+        return view('student.alumini', compact('students', 'provinces', 'academics', 'grades'));
     }
 
     /**
@@ -108,8 +115,9 @@ class StudentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Student $student)
+    public function destroy(string $id)
     {
-        //
+        Student::find($id)->delete();
+        return redirect()->back()->with('success', 'student removed successfully');
     }
 }

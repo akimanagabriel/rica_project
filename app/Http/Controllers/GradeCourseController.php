@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
+use App\Models\Grad;
 use App\Models\GradeCourse;
 use Illuminate\Http\Request;
 
@@ -12,7 +14,9 @@ class GradeCourseController extends Controller
      */
     public function index()
     {
-        //
+        $gradescourses = Grad::orderBy('id', 'ASC')->get();
+        $subjects = Course::orderBy('id', 'ASC')->get();
+        return view('grade.grades', compact('gradescourses', 'subjects'));
     }
 
     /**

@@ -1,8 +1,12 @@
 <?php
 
+use App\Http\Controllers\CourseController;
+use App\Http\Controllers\GradeCourseController;
+use App\Http\Controllers\LearningCenterController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 // guest middlewared routes
@@ -23,4 +27,15 @@ Route::middleware('auth')->prefix('dashboard')->group(function () {
 
     // suppliers
     Route::resource('/supplier', SupplierController::class);
+    // courses
+    Route::resource('/subject', CourseController::class);
+    // courses
+    Route::resource('/grade', GradeCourseController::class);
+
+    // learning center
+    Route::resource('/learning_center', LearningCenterController::class)->names('learning');
+    Route::put('/disable_learning_center', [LearningCenterController::class, 'disable'])->name('learning.disable');
+
+    // users routes
+    Route::resource('/users', UserController::class)->names('user');
 });

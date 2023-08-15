@@ -9,6 +9,7 @@ class LearningCenter extends Model
 {
     use HasFactory;
 
+    protected $table = "leaningcenter";
     protected $fillable = [
         'cid', 
         'graid', 

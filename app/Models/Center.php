@@ -9,6 +9,8 @@ class Center extends Model
 {
     use HasFactory;
 
+    protected $table = "center";
+
     protected $fillable = [
         'cname',
         'cdate',

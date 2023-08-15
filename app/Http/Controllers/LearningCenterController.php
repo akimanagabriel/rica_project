@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Center;
+use App\Models\Grad;
 use App\Models\LearningCenter;
 use Illuminate\Http\Request;
 
@@ -12,13 +14,24 @@ class LearningCenterController extends Controller
      */
     public function index()
     {
-        //
+        $centers = Center::orderBy('id', 'ASC')->get();
+        $grades = Grad::where('lcstatus', '0')->orderBy('id', 'ASC')->get();
+        return view('learningCenter.learningCenters', compact('centers', 'grades'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
+    {
+        //
+    }
+
+
+    /**
+     * disable a spacefic center
+     */
+    public function disable($id)
     {
         //
     }
