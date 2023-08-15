@@ -11,29 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('student', function (Blueprint $table) {
+        Schema::create('accademic', function (Blueprint $table) {
             $table->id();
-            $table->string('regnumber');
-            $table->string('name');
-            $table->string('fname');
-            $table->string('fphone');
-            $table->string('mname');
-            $table->string('ophone');
-            $table->string('gender');
-            $table->string('address');
-            $table->enum('status', ['0', '1'])->default('0');
-            $table->UnsignedBigInteger('userid');
-            $table->foreign('userid')->references('id')->on('users')->constrained()->onDelete('cascade');
-            $table->string('cdate');
-            $table->string('province');
-            $table->integer('district');
-            $table->string('sector');
-            $table->string('cell');
-            $table->string('village');
-            $table->string('comment');
-            $table->string('grade');
             $table->string('year');
-            $table->string('photo');
             $table->timestamps();
         });
     }
@@ -43,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('academics');
+        Schema::dropIfExists('accademic');
     }
 };

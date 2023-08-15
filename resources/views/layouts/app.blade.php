@@ -39,6 +39,12 @@
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/typeahead-js/typeahead.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/apex-charts/apex-charts.css') }}" />
+   
+    {{-- data tables --}}
+    <link rel="stylesheet" href="../../assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css" />
+    <link rel="stylesheet" href="../../assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css" />
+    <link rel="stylesheet" href="../../assets/vendor/libs/datatables-checkboxes-jquery/datatables.checkboxes.css" />
+    <link rel="stylesheet" href="../../assets/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css" />
 
     <!-- Page CSS -->
     <link rel="stylesheet" href="{{ asset('assets/vendor/css/pages/dashboards-crm.css') }}" />
@@ -50,6 +56,12 @@
     <script src="{{ asset('assets/vendor/js/template-customizer.js') }}"></script>
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="{{ asset('assets/js/config.js') }}"></script>
+
+    {{-- data tables --}}
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css" />
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 </head>
 
 <body>
@@ -76,10 +88,10 @@
                     <!-- Content -->
                     <main class="container-fluid">
                         {{-- header of each page --}}
-                        <div class="mt-2">
+                        <div class="my-2">
                             <div class="d-flex justify-content-between align-items-center">
+                                <h5 class="text-capitalize text-primary">@currentPath</h5>
                                 <h6 class="text-uppercase">@yield('pageTitle')</h6>
-                                <p>@currentPath</p>
                             </div>
                         </div>
 
@@ -130,6 +142,10 @@
 
     <!-- Page JS -->
     <script src="{{ asset('assets/js/dashboards-crm.js') }}"></script>
+
+    
+    
+
 </body>
 
 </html>

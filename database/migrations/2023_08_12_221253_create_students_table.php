@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('mname');
             $table->string('ophone');
             $table->string('gender');
-            $table->string('address');
+            $table->string('address')->nullable();
             $table->enum('status', ['0', '1'])->default('0');
             $table->UnsignedBigInteger('userid');
             $table->string('cdate');

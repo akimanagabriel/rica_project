@@ -9,6 +9,7 @@ class Academic extends Model
 {
     use HasFactory;
 
+    protected $table = 'accademic';
     protected $fillable = [
         'year',
     ];

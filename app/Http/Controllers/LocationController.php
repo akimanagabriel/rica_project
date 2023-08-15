@@ -3,63 +3,37 @@
 namespace App\Http\Controllers;
 
 use App\Models\Location;
-use Illuminate\Http\Request;
 
 class LocationController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    //province
+    public function getProvinces()
     {
-        //
+        $provinces = Location::select('province')->groupBy('province')->get();
+        return response()->json($provinces);
     }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    // get districts
+    public function getDistricts($province)
     {
-        //
+        $districts = Location::select('district')->where('province', $province)->groupBy('district')->get();
+        return response()->json($districts);
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    // get sectors
+    public function getSectors($district)
     {
-        //
+        $sectors = Location::select('sector')->where('district', $district)->groupBy('sector')->get();
+        return response()->json($sectors);
     }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Location $location)
+    // get cells
+    public function getCells($sector)
     {
-        //
+        $cells = Location::select('cell')->where('sector', $sector)->groupBy('cell')->get();
+        return response()->json($cells);
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Location $location)
+    // get villages
+    public function getVillages($cell)
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Location $location)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Location $location)
-    {
-        //
+        $villages = Location::select('village')->where('cell', $cell)->groupBy('village')->get();
+        return response()->json($villages);
     }
 }

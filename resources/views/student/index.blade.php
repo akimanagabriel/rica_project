@@ -9,7 +9,7 @@
         @if (count($students) == 0)
             <div class="alert alert-info">No students available </div>
         @else
-            <table class="table table-striped">
+            <table class="table table-striped" id="studentData">
                 <thead>
                     <tr>
                         <th>#</th>
@@ -42,7 +42,8 @@
                                     @if (isset($student->photo))
                                         {{-- <img src="{{ $student->photo }}" alt=""> --}}
                                         <div class="avatar avatar-sm me-2">
-                                            <span class="avatar-initial rounded-circle bg-success">pi</span>
+                                            <span
+                                                class="avatar-initial rounded-circle bg-primary">{{ $student->name[0] }}</span>
                                         </div>
                                     @else
                                         <div class="avatar avatar-sm me-2">
@@ -68,7 +69,6 @@
                             <td>{{ $student->ophone }}</td>
                             <td>{{ $student->district }}</td>
                             <td>{{ $student->sector }}</td>
-                            <td>{{ $student->cdate }}</td>
                             <td>
                                 @if ($student->status)
                                     <div class='badge bg-label-success'>Active</div>
@@ -94,6 +94,5 @@
                 </tbody>
             </table>
         @endif
-
     </div>
 @endsection

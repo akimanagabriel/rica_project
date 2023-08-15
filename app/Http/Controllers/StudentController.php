@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Grad;
+use App\Models\Location;
+use App\Models\Academic;
 use App\Models\Student;
 use Illuminate\Http\Request;
 
@@ -12,7 +15,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        $students = Student::latest()->get();
+        $students = Student::where('status', '1')->orderBy('grade', 'asc')->orderBy('name', 'asc')->get();
         return view('student.index', compact('students'));
     }
 
@@ -21,7 +24,8 @@ class StudentController extends Controller
      */
     public function alumini()
     {
-        //
+        $students = Student::where('status', '0')->orderBy('grade', 'asc')->orderBy('name', 'asc')->get();
+        return view('student.alumini', compact('students'));
     }
 
     /**
@@ -29,9 +33,9 @@ class StudentController extends Controller
      */
     public function create()
     {
-        $provinces = [];
-        $academics = [];
-        $grades = [];
+        $provinces = Location::select('province')->groupBy('province')->get();
+        $grades = Grad::orderBy('id', 'asc')->get();
+        $academics = Academic::orderBy('year', 'asc')->get();
 
         return view('student.create', [
             'provinces' => $provinces,
@@ -45,7 +49,36 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // // validate
+        $request->validate([
+            'name' => 'required',
+            'province' => 'required',
+            'fphone' => 'required',
+            'dob' => 'required',
+            'district' => 'required',
+            'ophone' => '',
+            'fname' => '',
+            'sector' => 'required',
+            'mname' => '',
+            'cell' => 'required',
+            'gender' => 'required',
+            'village' => 'required',
+            'grade' => 'required',
+            'year' => 'required',
+            'comment' => 'required',
+            'status' => 'required',
+            'address' => '',
+        ]);
+
+        // $this->validate($request, );
+        $regNumber = str_pad(Student::latest()->first()->id + 1, 4, '0', STR_PAD_LEFT);
+        $request->merge([
+            'cdate' => date('Y-m-d'),
+            'userid' => auth()->user()->id,
+            'regnumber' => 'LICAST' . $regNumber,
+        ]);
+        Student::create($request->all());
+        return redirect()->route('student.index')->with('success', 'Student Added Successfully');
     }
 
     /**

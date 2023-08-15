@@ -9,6 +9,7 @@ class Grad extends Model
 {
     use HasFactory;
 
+    protected $table = 'grad';
     protected $fillable = [
         'grad',
         'lownumber',

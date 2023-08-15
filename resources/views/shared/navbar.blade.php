@@ -19,37 +19,7 @@
         <!-- /Search -->
 
         <ul class="navbar-nav flex-row align-items-center ms-auto">
-            <!-- Language -->
-            <li class="nav-item dropdown-language dropdown me-1 me-xl-0">
-                <a class="nav-link btn btn-text-secondary rounded-pill btn-icon dropdown-toggle hide-arrow"
-                    href="javascript:void(0);" data-bs-toggle="dropdown">
-                    <i class="mdi mdi-translate mdi-24px"></i>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-end py-2">
-                    <li>
-                        <a class="dropdown-item" href="javascript:void(0);" data-language="en">
-                            <span class="align-middle">English</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="javascript:void(0);" data-language="fr">
-                            <span class="align-middle">French</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="javascript:void(0);" data-language="de">
-                            <span class="align-middle">German</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="javascript:void(0);" data-language="pt">
-                            <span class="align-middle">Portuguese</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <!--/ Language -->
-
+            
             <!-- Style Switcher -->
             <li class="nav-item dropdown-style-switcher dropdown me-2 me-xl-0">
                 <a class="nav-link btn btn-text-secondary rounded-pill btn-icon dropdown-toggle hide-arrow"

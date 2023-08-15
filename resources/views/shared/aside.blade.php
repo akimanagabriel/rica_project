@@ -143,7 +143,7 @@
 
             <ul class="menu-sub">
                 <li class="menu-item">
-                    <a href="app-academy-dashboard.html" class="menu-link">
+                    <a href="{{ route('supplier.index') }}" class="menu-link">
                         <div data-i18n="Pace Supplier">Pace Supplier</div>
                     </a>
                 </li>
