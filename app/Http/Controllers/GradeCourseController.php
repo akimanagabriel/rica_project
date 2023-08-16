@@ -15,7 +15,11 @@ class GradeCourseController extends Controller
     public function index()
     {
         $gradescourses = Grad::orderBy('id', 'ASC')->get();
-        $subjects = Course::orderBy('id', 'ASC')->get();
+        // select subjects not in another grade
+        $subjects = Course::whereNotIn('id', function ($query) {
+            $query->select('cid')->from((new GradeCourse)->getTable());
+        })->get();
+
         return view('grade.grades', compact('gradescourses', 'subjects'));
     }
 
@@ -32,9 +36,12 @@ class GradeCourseController extends Controller
      */
     public function store(Request $request)
     {
-        if (GradeCourse::find($request->cid)) {
-            return redirect()->back()->with('error', "course already exist");
+        $courseCount = GradeCourse::where('cid', $request->cid)->count();
+
+        if ($courseCount > 0) {
+            return redirect()->back()->with('error', "Course already exists");
         }
+
         GradeCourse::create($request->toArray());
         return redirect()->back()->with('success', "Course added");
     }

@@ -87,7 +87,7 @@
                 <!-- / Navbar -->
 
                 <!-- Content wrapper -->
-                <div class="content-wrapper">                    
+                <div class="content-wrapper">
                     <!-- Content -->
                     <main class="container-fluid">
                         {{-- header of each page --}}
@@ -97,16 +97,16 @@
                                 <h6 class="text-uppercase">@yield('pageTitle')</h6>
                             </div>
                         </div>
-                        
-                        
+
+
                         @yield('content')
                     </main>
                     <!-- / Content -->
-                    
+
                     <!-- Footer -->
                     @include('shared.footer')
                     <!-- / Footer -->
-                    
+
                     <div class="content-backdrop fade"></div>
                 </div>
                 <!-- Content wrapper -->
@@ -121,7 +121,7 @@
         <div class="drag-target"></div>
     </div>
     <!-- / Layout wrapper -->
-    
+
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
     <script src="{{ asset('assets/vendor/libs/jquery/jquery.js') }}"></script>
@@ -133,23 +133,27 @@
     <script src="{{ asset('assets/vendor/libs/i18n/i18n.js') }}"></script>
     <script src="{{ asset('assets/vendor/libs/typeahead-js/typeahead.js') }}"></script>
     <script src="{{ asset('assets/vendor/js/menu.js') }}"></script>
-    
+
     <!-- endbuild -->
 
     <!-- Vendors JS -->
     <script src="{{ asset('assets/vendor/libs/apex-charts/apexcharts.js') }}"></script>
     <script src="{{ asset('assets/vendor/libs/cleavejs/cleave.js') }}"></script>
     <script src="{{ asset('assets/vendor/libs/cleavejs/cleave-phone.js') }}"></script>
-    
+
     <!-- Main JS -->
     <script src="{{ asset('assets/js/main.js') }}"></script>
-    
+
     <!-- Page JS -->
     <script src="{{ asset('assets/js/dashboards-crm.js') }}"></script>
+
     {{-- flash messages --}}
-    <script src="{{ asset('assets/vendor/libs/toastr/toastr.js') }}"></script>
+    <!-- Include jQuery and jQuery Toast Plugin CDN links -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.js"></script>
     @include('shared.messages')
-    
+
     {{-- data tables --}}
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>

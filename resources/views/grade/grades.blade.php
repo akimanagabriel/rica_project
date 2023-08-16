@@ -47,9 +47,9 @@
                                                 $i = 0;
                                             @endphp
                                             @foreach ($gcourses as $gcourse)
-                                            @php
-                                                $i++;
-                                            @endphp
+                                                @php
+                                                    $i++;
+                                                @endphp
                                                 <li class="d-flex justify-content-between">
                                                     <span>{{ $i }}. {{ $gcourse->cousename }}</span>
                                                     <button type='button' class='btn btn-danger btn-sm'
@@ -116,8 +116,8 @@
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                                 aria-label="Close"></button>
                                                             <div class="text-center mb-4">
-                                                                <h5 class="mb-2">ADD SUBJECT IN GRADE (
-                                                                    GRADE-{{ $gradescourse->grad }})</h5>
+                                                                <h5 class="mb-2">ADD SUBJECT IN GRADE
+                                                                    (GRADE-{{ $gradescourse->grad }})</h5>
 
                                                             </div>
                                                             <div class="col-12">
@@ -125,9 +125,9 @@
                                                                     <input type="hidden" value="{{ $gradescourse->id }}"
                                                                         name="gid" />
                                                                     <select class="form-select" name="cid"
-                                                                        id="bs-validation-country" required>
-                                                                        <option disabled selected value="">Select
-                                                                            Subject
+                                                                        id="bs-validation-country" required
+                                                                        {{ $subjects->count() == 0 ? 'disabled' : '' }}>
+                                                                        <option disabled selected value="">{{ $subjects->count() == 0 ? 'No subject available' : 'Select subject' }}
                                                                         </option>
                                                                         @foreach ($subjects as $subject)
                                                                             <option value="{{ $subject->id }}">
