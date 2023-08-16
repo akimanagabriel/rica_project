@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Supplier;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SupplierController extends Controller
 {
@@ -12,7 +13,7 @@ class SupplierController extends Controller
      */
     public function index()
     {
-        $suppliers = Supplier::orderBy('id', 'asc')->get();
+        $suppliers = Supplier::orderBy('id', 'desc')->get();
         return view('supplier.suppliers', compact('suppliers'));
     }
 
@@ -29,7 +30,19 @@ class SupplierController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "sname" => "required",
+            "phone" => "required",
+            "address" => "required",
+            "status" => "required",
+        ]);
+        $request->merge([
+            'userid' => Auth::user()->id,
+            'cdate' => date('Y-m-d')
+        ]);
+        // return dd($request->all());
+        Supplier::create($request->toArray());
+        return redirect()->back()->with('success', 'Pace supplier created successfully!');
     }
 
     /**
@@ -51,16 +64,18 @@ class SupplierController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Supplier $supplier)
+    public function update(Request $request, string $supplierId)
     {
-        //
+        $supplier = Supplier::find(decrypt($supplierId))->update($request->toArray());
+        return redirect()->back()->with('success', 'Supplier changed successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Supplier $supplier)
+    public function destroy(string $supplierId)
     {
-        //
+        Supplier::find(decrypt($supplierId))->delete();
+        return redirect()->back()->with('success', 'Supplier removed successfully');
     }
 }
