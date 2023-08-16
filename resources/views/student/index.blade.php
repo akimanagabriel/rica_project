@@ -39,23 +39,15 @@
                             </td>
                             <td>
                                 <div>
-                                    @if (isset($student->photo))
-                                        {{-- <img src="{{ $student->photo }}" alt=""> --}}
-                                        <div class="avatar avatar-sm me-2">
-                                            <span
-                                                class="avatar-initial rounded-circle bg-primary">{{ $student->name[0] }}</span>
-                                        </div>
-                                    @else
-                                        <div class="avatar avatar-sm me-2">
-                                            @if ($student->gender == 'Male')
-                                                <img src="{{ asset('assets/img/avatars/3.png') }}" class="rounded-circle"
-                                                    alt="">
-                                            @else
-                                                <img src="{{ asset('assets/img/avatars/12.png') }}" class="rounded-circle"
-                                                    alt="">
-                                            @endif
-                                        </div>
-                                    @endif
+                                    <div class="avatar avatar-sm me-2">
+                                        @if ($student->gender == 'Male')
+                                            <img src="{{ asset('assets/img/avatars/3.png') }}" class="rounded-circle"
+                                                alt="">
+                                        @else
+                                            <img src="{{ asset('assets/img/avatars/12.png') }}" class="rounded-circle"
+                                                alt="">
+                                        @endif
+                                    </div>
                                 </div>
                             </td>
                             <td>{{ strtoupper($student->regnumber) }}</td>
@@ -139,9 +131,10 @@
                                                         <!-- First Input Field -->
                                                         <div class="col-md-4 fv-plugins-icon-container">
                                                             <div class="form-floating form-floating-outline">
-                                                                <input type="text" id="formValidationName" name="name"
+                                                                <input value="{{ $student->name }}" type="text"
+                                                                    id="formValidationName" name="name"
                                                                     class="form-control" placeholder="Names"
-                                                                    name="formValidationName" autocomplete="off">
+                                                                    autocomplete="off">
                                                                 <label for="formValidationName">Names</label>
                                                             </div>
                                                             <div
@@ -157,13 +150,14 @@
                                                             <div class="form-floating form-floating-outline mb-4">
                                                                 <select class="form-select" name="province"
                                                                     id="bs-validation-country">
-                                                                    <option disabled selected value="">Select Provence
                                                                     </option>
                                                                     @foreach ($provinces as $item)
-                                                                        <option value="{{ $item->province }}">
+                                                                        <option value="{{ $item->province }}"
+                                                                            {{ $student->province == $item->province ? 'selected' : '' }}>
                                                                             {{ $item->province }}</option>
                                                                     @endforeach
                                                                 </select>
+                                                                <label for="formValidationName">Province</label>
                                                                 <div
                                                                     class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback">
                                                                     @error('province')
@@ -175,10 +169,9 @@
                                                         <!-- Third Input Field -->
                                                         <div class="col-md-4 fv-plugins-icon-container">
                                                             <div class="form-floating form-floating-outline">
-                                                                <input autocomplete="off" type="text"
-                                                                    id="formValidationPhone" name="fphone"
-                                                                    class="form-control" placeholder="Your Phone"
-                                                                    name="formValidationPhone">
+                                                                <input value="{{ $student->fphone }}" autocomplete="off"
+                                                                    type="text" id="formValidationPhone" name="fphone"
+                                                                    class="form-control" placeholder="Your Phone">
                                                                 <label for="formValidationPhone">First Phone</label>
                                                             </div>
                                                             <div
@@ -190,10 +183,9 @@
                                                         </div>
                                                         <div class="col-md-4 fv-plugins-icon-container">
                                                             <div class="form-floating form-floating-outline">
-                                                                <input autocomplete="off" type="date"
-                                                                    id="formValidationName" name="dob"
-                                                                    class="form-control" placeholder="John Doe"
-                                                                    name="formValidationName">
+                                                                <input value="{{ $student->cdate }}" autocomplete="off"
+                                                                    type="date" id="formValidationName" name="dob"
+                                                                    class="form-control" placeholder="John Doe">
                                                                 <label for="formValidationName">Date Of Birth</label>
                                                             </div>
                                                             <div
@@ -209,9 +201,11 @@
                                                             <div class="form-floating form-floating-outline mb-4">
                                                                 <select class="form-select" name="district"
                                                                     id="bs-validation-country">
-                                                                    <option disabled selected value="">Select
-                                                                        District
+                                                                    <option disabled selected
+                                                                        value="{{ $student->district }}">
+                                                                        {{ $student->district }}
                                                                     </option>
+                                                                    <label for="formValidationName">Dstrict</label>
                                                                 </select>
                                                             </div>
                                                             <div
@@ -224,10 +218,10 @@
                                                         <!-- Third Input Field -->
                                                         <div class="col-md-4 fv-plugins-icon-container">
                                                             <div class="form-floating form-floating-outline">
-                                                                <input autocomplete="off" type="text"
-                                                                    id="formValidationPhone" name="ophone"
-                                                                    class="form-control" placeholder="Second Phone"
-                                                                    name="formValidationPhone">
+                                                                <input value="{{ $student->ophone }}" autocomplete="off"
+                                                                    type="text" id="formValidationPhone"
+                                                                    name="ophone" class="form-control"
+                                                                    placeholder="Second Phone" name="formValidationPhone">
                                                                 <label for="formValidationPhone">Second Phone</label>
                                                             </div>
                                                             <div
@@ -239,10 +233,9 @@
                                                         </div>
                                                         <div class="col-md-4 fv-plugins-icon-container">
                                                             <div class="form-floating form-floating-outline">
-                                                                <input autocomplete="off" type="text"
-                                                                    id="formValidationName" name="fname"
-                                                                    class="form-control" placeholder="Father Name"
-                                                                    name="formValidationName">
+                                                                <input value="{{ $student->fname }}" autocomplete="off"
+                                                                    type="text" id="formValidationName" name="fname"
+                                                                    class="form-control" placeholder="Father Name">
                                                                 <label for="formValidationName">Father Name</label>
                                                             </div>
                                                             <div
@@ -258,9 +251,12 @@
                                                             <div class="form-floating form-floating-outline mb-4">
                                                                 <select class="form-select" name="sector"
                                                                     id="bs-validation-country">
-                                                                    <option disabled selected value="">Select Sector
+                                                                    <option disabled selected
+                                                                        value="{{ $student->sector }}">
+                                                                        {{ $student->sector }}
                                                                     </option>
                                                                 </select>
+                                                                <label for="formValidationName">Sector</label>
                                                             </div>
                                                             <div
                                                                 class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback">
@@ -274,7 +270,7 @@
                                                             <div class="form-floating form-floating-outline">
                                                                 <input autocomplete="off" type="text"
                                                                     id="formValidationPhone" name="comment"
-                                                                    value="NONE" class="form-control"
+                                                                    value="{{ $student->comment }}" class="form-control"
                                                                     placeholder="Your comment" name="formValidationPhone">
                                                                 <label for="formValidationPhone">Comment</label>
                                                             </div>
@@ -287,10 +283,9 @@
                                                         </div>
                                                         <div class="col-md-4 fv-plugins-icon-container">
                                                             <div class="form-floating form-floating-outline">
-                                                                <input autocomplete="off" type="text"
-                                                                    id="formValidationName" name="mname"
-                                                                    class="form-control" placeholder="Mother Name"
-                                                                    name="formValidationName">
+                                                                <input value="{{ $student->mname }}" autocomplete="off"
+                                                                    type="text" id="formValidationName" name="mname"
+                                                                    class="form-control" placeholder="Mother Name">
                                                                 <label for="formValidationName">Mather Name</label>
                                                             </div>
                                                             <div
@@ -306,10 +301,11 @@
                                                             <div class="form-floating form-floating-outline mb-4">
                                                                 <select class="form-select" name="cell"
                                                                     id="bs-validation-country">
-                                                                    <option disabled selected value=""> Select Cell
+                                                                    <option disabled selected
+                                                                        value="{{ $student->cell }}">{{ $student->cell }}
                                                                     </option>
-
                                                                 </select>
+                                                                <label for="formValidationName">Cell</label>
                                                             </div>
                                                             <div
                                                                 class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback">
@@ -322,12 +318,16 @@
                                                             <div class="form-floating form-floating-outline mb-4">
                                                                 <select class="form-select" name="status"
                                                                     id="bs-validation-country">
-                                                                    <option disabled selected value="">Select Status
+                                                                    <option value="1"
+                                                                        {{ $student->status == 1 ? 'selected' : '' }}>
+                                                                        Active
                                                                     </option>
-                                                                    <option value="1">Active</option>
-                                                                    <option value="0">Passive</option>
-
+                                                                    <option value="0"
+                                                                        {{ $student->status == 0 ? 'selected' : '' }}>
+                                                                        Passive
+                                                                    </option>
                                                                 </select>
+                                                                <label for="formValidationName">Status</label>
                                                             </div>
                                                             <div
                                                                 class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback">
@@ -341,12 +341,15 @@
                                                             <div class="form-floating form-floating-outline mb-4">
                                                                 <select class="form-select" name="gender"
                                                                     id="bs-validation-country">
-                                                                    <option disabled selected value="">Select Gender
-                                                                    </option>
-                                                                    <option value="Male">Male</option>
-                                                                    <option value="Female">Female</option>
+                                                                    <option value="Male"
+                                                                        {{ $student->status == 'Male' ? 'selected' : '' }}>
+                                                                        Male</option>
+                                                                    <option value="Female"
+                                                                        {{ $student->status == 'Female' ? 'selected' : '' }}>
+                                                                        Female</option>
 
                                                                 </select>
+                                                                <label for="formValidationName">Gender</label>
                                                             </div>
                                                             <div
                                                                 class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback">
@@ -360,9 +363,11 @@
                                                             <div class="form-floating form-floating-outline mb-4">
                                                                 <select class="form-select" name="village"
                                                                     id="bs-validation-country">
-                                                                    <option disabled selected value="">Select Village
-                                                                    </option>
+                                                                    <option disabled selected
+                                                                        value="{{ $student->village }}">
+                                                                        {{ $student->village }}</option>
                                                                 </select>
+                                                                <label for="formValidationName">Village</label>
                                                             </div>
                                                             <div
                                                                 class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback">
@@ -375,16 +380,15 @@
                                                             <div class="form-floating form-floating-outline mb-2">
                                                                 <select class="form-select" name="year"
                                                                     id="bs-validation-country">
-                                                                    <option disabled selected value="">Select
-                                                                        Academic
-                                                                        Year</option>
                                                                     @foreach ($academics as $academic)
-                                                                        <option value="{{ $academic->year }}">
+                                                                        <option value="{{ $academic->year }}"
+                                                                            {{ $student->year == $academic->year ? 'selected' : '' }}>
                                                                             {{ $academic->year }}</option>
                                                                     @endforeach
 
 
                                                                 </select>
+                                                                <label for="formValidationName">Academic year</label>
                                                             </div>
                                                             <div
                                                                 class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback">
@@ -397,14 +401,13 @@
                                                             <div class="form-floating form-floating-outline mb-2">
                                                                 <select class="form-select" name="grade"
                                                                     id="bs-validation-country">
-                                                                    <option disabled selected value="">Select
-                                                                        Academic
-                                                                        Year</option>
                                                                     @foreach ($grades as $grade)
-                                                                        <option value="{{ $grade->grad }}">
+                                                                        <option value="{{ $grade->grad }}"
+                                                                            {{ $student->grade == $grade->grad ? 'selected' : '' }}>
                                                                             GRADE-{{ $grade->grad }}</option>
                                                                     @endforeach
                                                                 </select>
+                                                                <label for="formValidationName">Grade</label>
                                                             </div>
                                                             <div
                                                                 class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback">

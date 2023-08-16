@@ -107,9 +107,10 @@ class StudentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Student $student)
+    public function update(Request $request, string $id)
     {
-        //
+        Student::find(decrypt($id))->update($request->all());
+        return redirect()->back()->with('success', 'Student Updated Successfully');
     }
 
     /**
