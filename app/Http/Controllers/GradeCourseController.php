@@ -32,7 +32,11 @@ class GradeCourseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if (GradeCourse::find($request->cid)) {
+            return redirect()->back()->with('error', "course already exist");
+        }
+        GradeCourse::create($request->toArray());
+        return redirect()->back()->with('success', "Course added");
     }
 
     /**
@@ -62,8 +66,10 @@ class GradeCourseController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(GradeCourse $gradeCourse)
+    public function destroy(string $gradeCourseId)
     {
-        //
+        $gradeCourse = GradeCourse::find(decrypt($gradeCourseId));
+        $gradeCourse->delete();
+        return redirect()->back()->with('success', "course removed to Grade");
     }
 }
