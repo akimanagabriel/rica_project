@@ -29,7 +29,12 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "cousename" => "required",
+            "shortname" => "required"
+        ]);
+        Course::create($request->toArray());
+        return redirect()->back()->with('success', "Course created successfully!");
     }
 
     /**
@@ -51,9 +56,15 @@ class CourseController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Course $course)
+    public function update(Request $request, string $courseId)
     {
-        //
+        // dd($request->toArray());
+        $request->validate([
+            "cousename" => "required|min:2",
+            "shortname" => "required|min:2"
+        ]);
+        Course::find(decrypt($courseId))->update($request->toArray());
+        return redirect()->back()->with('success', "Subject updated!");
     }
 
     /**
