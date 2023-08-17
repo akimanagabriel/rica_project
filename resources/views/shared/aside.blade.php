@@ -94,7 +94,7 @@
         <!-- Academy acep store start -->
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons mdi mdi-seal-variant"></i>
+                <i class="menu-icon tf-icons mdi mdi-book-open-page-variant-outline"></i>
                 <div data-i18n="Pace Store">Pace Store</div>
             </a>
 
