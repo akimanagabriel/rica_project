@@ -9,14 +9,27 @@
     </div>
     <div class="card">
         <div class="card-body">
-            <table>
+            <table class="table table-striped">
                 <thead>
                     <tr>
                         <th>#</th>
                         <th>learning center</th>
                         <th>supervisor</th>
+                        <th>student number</th>
+                        <th>student list</th>
+                        <th>status</th>
                     </tr>
                 </thead>
+                <tbody>
+                    <tr>
+                        <td>#</td>
+                        <td>learning center</td>
+                        <td>supervisor</td>
+                        <td>student number</td>
+                        <td>student list</td>
+                        <td>status</td>
+                    </tr>
+                </tbody>
             </table>
         </div>
     </div>
