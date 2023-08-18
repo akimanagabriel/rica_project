@@ -22,21 +22,21 @@
         </li>
 
         @if (Auth::user()->level == 'Admin')
-        <!-- Dashboards -->
-        <li class="menu-item {{ Request::routeIs('home') ? 'active' : '' }}">
-            <a href="{{ route('home') }}" class="menu-link">
-                <i class="menu-icon tf-icons mdi mdi-home-outline"></i>
-                <div data-i18n="Dashboards">Dashboard</div>
-            </a>
+            <!-- Dashboards -->
+            <li class="menu-item {{ Request::routeIs('home') ? 'active' : '' }}">
+                <a href="{{ route('home') }}" class="menu-link">
+                    <i class="menu-icon tf-icons mdi mdi-home-outline"></i>
+                    <div data-i18n="Dashboards">Dashboard</div>
+                </a>
 
-        </li>
+            </li>
 
-        <!-- lica academic-->
-        <li class="menu-header fw-medium mt-4">
-            <span class="menu-header-text">lica academic</span>
-        </li>
+            <!-- lica academic-->
+            <li class="menu-header fw-medium mt-4">
+                <span class="menu-header-text">lica academic</span>
+            </li>
 
-        <!-- Academy student start -->
+            <!-- Academy student start -->
             <li class="menu-item {{ Request::routeIs('student') ? 'active' : '' }}">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
                     <i class="menu-icon tf-icons mdi mdi-account-school-outline"></i>
@@ -76,7 +76,7 @@
 
                 <ul class="menu-sub">
                     <li class="menu-item">
-                        <a href="app-academy-dashboard.html" class="menu-link">
+                        <a href="{{ route('assign.index') }}" class="menu-link">
                             <div data-i18n="Assign LC to Supervisor">Assign LC to Supervisor</div>
                         </a>
                     </li>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AssignGradeTeacherController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\GradeCourseController;
 use App\Http\Controllers\LearningCenterController;
@@ -42,4 +43,7 @@ Route::middleware('auth')->prefix('dashboard')->group(function () {
     Route::patch('/disableorenableuser{id}', [UserController::class, 'disableEnable'])->name("user.disableEnable");
     Route::patch('/resetPassword{id}', [UserController::class, 'resetPassword'])->name("user.resetPassword");
     Route::get('/setting', [UserController::class, 'accountSetting'])->name("user.accountSetting");
+
+    // suppervisor routes
+    Route::resource("/assign_LC", AssignGradeTeacherController::class)->names("assign");
 });
