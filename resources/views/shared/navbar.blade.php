@@ -19,7 +19,7 @@
         <!-- /Search -->
 
         <ul class="navbar-nav flex-row align-items-center ms-auto">
-            
+
             <!-- Style Switcher -->
             <li class="nav-item dropdown-style-switcher dropdown me-2 me-xl-0">
                 <a class="nav-link btn btn-text-secondary rounded-pill btn-icon dropdown-toggle hide-arrow"
@@ -342,19 +342,16 @@
             <li class="nav-item navbar-dropdown dropdown-user dropdown">
                 <a class="nav-link dropdown-toggle hide-arrow p-0" href="javascript:void(0);"
                     data-bs-toggle="dropdown">
-                    <div class="avatar avatar-online">
-                        <img src="../../assets/img/avatars/1.png" alt class="w-px-40 h-auto rounded-circle" />
+                    <div class="avatar avatar-sm avatar-online">
+                        <span class="avatar-initial rounded-circle bg-primary">{{ Auth::user()->name[0] }}</span>
                     </div>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end mt-3 py-2">
                     <li>
-                        <a class="dropdown-item pb-2 mb-1" href="pages-account-settings-account.html">
+                        <a class="dropdown-item pb-2 mb-1" href="{{ route('user.accountSetting') }}">
                             <div class="d-flex align-items-center">
-                                <div class="flex-shrink-0 me-2 pe-1">
-                                    <div class="avatar avatar-online">
-                                        <img src="../../assets/img/avatars/1.png" alt
-                                            class="w-px-40 h-auto rounded-circle" />
-                                    </div>
+                                <div class="avatar avatar-md me-2 avatar-online">
+                                    <span class="avatar-initial rounded-circle bg-primary">{{ Auth::user()->name[0] }}</span>
                                 </div>
                                 <div class="flex-grow-1">
                                     <h6 class="mb-0">{{ Auth::user()->username }}</h6>
@@ -367,12 +364,12 @@
                         <div class="dropdown-divider my-0"></div>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="pages-profile-user.html">
+                        <a class="dropdown-item" href="{{ route('user.accountSetting') }}">
                             <i class="mdi mdi-account-outline me-1 mdi-20px"></i>
                             <span class="align-middle">My Account</span>
                         </a>
                     </li>
-                    
+
                     <li>
                         <div class="dropdown-divider my-1"></div>
                     </li>

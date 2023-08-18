@@ -35,7 +35,11 @@ Route::middleware('auth')->prefix('dashboard')->group(function () {
     // learning center
     Route::resource('/learning_center', LearningCenterController::class)->names('learning');
     Route::put('/disable_learning_center{id}', [LearningCenterController::class, 'disable'])->name('learning.disable');
-    Route::patch('/assigngradetolearningcenter',[LearningCenterController::class,'assignGrade'])->name('assignGradeToLC');
+    Route::patch('/assigngradetolearningcenter', [LearningCenterController::class, 'assignGrade'])->name('assignGradeToLC');
+
     // users routes
     Route::resource('/users', UserController::class)->names('user');
+    Route::patch('/disableorenableuser{id}', [UserController::class, 'disableEnable'])->name("user.disableEnable");
+    Route::patch('/resetPassword{id}', [UserController::class, 'resetPassword'])->name("user.resetPassword");
+    Route::get('/setting', [UserController::class, 'accountSetting'])->name("user.accountSetting");
 });

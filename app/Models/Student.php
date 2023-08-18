@@ -31,6 +31,7 @@ class Student extends Model
         'comment',
         'grade', 
         'year', 
-        'photo'
+        'photo',
+        'level'
     ];
 }
