@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\AssignGradeTeacher;
+use App\Models\Center;
+use App\Models\User;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AssignGradeTeacherController extends Controller
 {
@@ -27,7 +31,21 @@ class AssignGradeTeacherController extends Controller
             ->orderBy('users.name', 'asc')
             ->get();
 
-        return view('assign.assignTeacher', compact('assignments'));
+        $remainingCenters = Center::select('cname', 'id')->whereNotIn('id', function ($query) {
+            $query->select('centerId')->from('assign_grade_teachers');
+        })->get();
+
+
+        $supervisors = User::where('level', 'Supervisor')
+            ->distinct()
+            ->orderBy('name')
+            ->get();
+
+        return view('assign.assignTeacher', compact(
+            'assignments',
+            'remainingCenters',
+            'supervisors'
+        ));
     }
 
     /**
@@ -43,7 +61,16 @@ class AssignGradeTeacherController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "centerId" => "required|numeric",
+            "teacherId" => "required|numeric",
+            "status" => "required|numeric|between:0,1"
+        ]);
+        $request->merge([
+            "userId" => Auth::user()->id
+        ]);
+        AssignGradeTeacher::create($request->toArray());
+        return redirect()->back()->with("success", "Assigned successfully!");
     }
 
     /**
@@ -73,8 +100,16 @@ class AssignGradeTeacherController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(AssignGradeTeacher $assignGradeTeacher)
+    public function destroy(string $assignGradeTeacher)
     {
-        //
+        try {
+            AssignGradeTeacher::find(decrypt($assignGradeTeacher))->delete();
+            $message = "Deleted successfully";
+            $type = "success";
+        } catch (Exception $e) {
+            $message = $e->getMessage();
+            $type = "error";
+        }
+        return redirect()->back()->with($type, $message);
     }
 }

@@ -1,53 +1,53 @@
 <!DOCTYPE html>
 
-<html lang="en" class="light-style layout-navbar-fixed layout-menu-fixed" dir="ltr" data-theme="theme-default"
-    data-assets-path="../../assets/" data-template="vertical-menu-template">
+<html class="light-style layout-navbar-fixed layout-menu-fixed" data-assets-path="../../assets/"
+    data-template="vertical-menu-template" data-theme="theme-default" dir="ltr" lang="en">
 
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+    <meta content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+        name="viewport" />
 
     <title>@yield('title') | LICA MS V1</title>
 
-    <meta name="description" content="" />
+    <meta content="" name="description" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="{{ asset('assets/logo/lica.jpg') }}" />
+    <link href="{{ asset('assets/logo/lica.jpg') }}" rel="icon" type="image/x-icon" />
 
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&ampdisplay=swap"
         rel="stylesheet" />
 
     <!-- Icons -->
-    <link rel="stylesheet" href="{{ asset('assets/vendor/fonts/materialdesignicons.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/vendor/fonts/fontawesome.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/vendor/fonts/flag-icons.css') }}" />
+    <link href="{{ asset('assets/vendor/fonts/materialdesignicons.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/vendor/fonts/fontawesome.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/vendor/fonts/flag-icons.css') }}" rel="stylesheet" />
 
     <!-- Menu waves for no-customizer fix -->
-    <link rel="stylesheet" href="{{ asset('assets/vendor/libs/node-waves/node-waves.css') }}" />
+    <link href="{{ asset('assets/vendor/libs/node-waves/node-waves.css') }}" rel="stylesheet" />
 
     <!-- Core CSS -->
-    <link rel="stylesheet" href="{{ asset('assets/vendor/css/rtl/core.css') }}" class="template-customizer-core-css" />
-    <link rel="stylesheet" href="{{ asset('assets/vendor/css/rtl/theme-default.css') }}"
-        class="template-customizer-theme-css" />
-    <link rel="stylesheet" href="{{ asset('assets/css/demo.css') }}" />
+    <link class="template-customizer-core-css" href="{{ asset('assets/vendor/css/rtl/core.css') }}" rel="stylesheet" />
+    <link class="template-customizer-theme-css" href="{{ asset('assets/vendor/css/rtl/theme-default.css') }}"
+        rel="stylesheet" />
+    <link href="{{ asset('assets/css/demo.css') }}" rel="stylesheet" />
 
     <!-- Vendors CSS -->
-    <link rel="stylesheet" href="{{ asset('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/vendor/libs/typeahead-js/typeahead.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/vendor/libs/apex-charts/apex-charts.css') }}" />
+    <link href="{{ asset('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/vendor/libs/typeahead-js/typeahead.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/vendor/libs/apex-charts/apex-charts.css') }}" rel="stylesheet" />
 
     {{-- data tables --}}
-    <link rel="stylesheet" href="../../assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css" />
-    <link rel="stylesheet" href="../../assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css" />
-    <link rel="stylesheet" href="../../assets/vendor/libs/datatables-checkboxes-jquery/datatables.checkboxes.css" />
-    <link rel="stylesheet" href="../../assets/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css" />
+    <link href="../../assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css" rel="stylesheet" />
+    <link href="../../assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css" rel="stylesheet" />
+    <link href="../../assets/vendor/libs/datatables-checkboxes-jquery/datatables.checkboxes.css" rel="stylesheet" />
+    <link href="../../assets/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css" rel="stylesheet" />
 
     <!-- Page CSS -->
-    <link rel="stylesheet" href="{{ asset('assets/vendor/css/pages/dashboards-crm.css') }}" />
+    <link href="{{ asset('assets/vendor/css/pages/dashboards-crm.css') }}" rel="stylesheet" />
 
     <!-- Helpers -->
     <script src="{{ asset('assets/vendor/js/helpers.js') }}"></script>
@@ -58,16 +58,21 @@
     <script src="{{ asset('assets/js/config.js') }}"></script>
 
     {{-- data tables --}}
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css" />
+    <link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css" rel="stylesheet" />
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 
     {{-- data tables --}}
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+    <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet">
 
     {{-- toast --}}
-    <link rel="stylesheet" href="{{ asset('assets/vendor/libs/toastr/toastr.css') }}">
+    <link href="{{ asset('assets/vendor/libs/toastr/toastr.css') }}" rel="stylesheet">
+
+
+    <!-- Select2 CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0/css/select2.min.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -150,17 +155,20 @@
     {{-- flash messages --}}
     <!-- Include jQuery and jQuery Toast Plugin CDN links -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.js"></script>
     @include('shared.messages')
 
     {{-- data tables --}}
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+
     <script>
         $('table').dataTable({
             paginate: true,
         });
+
+        $(".select2").select2();
     </script>
 
 </body>
