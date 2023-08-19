@@ -11,8 +11,8 @@ class LearningCenter extends Model
 
     protected $table = "leaningcenter";
     protected $fillable = [
-        'cid', 
-        'graid', 
+        'cid',
+        'graid',
         'cdate'
     ];
 }

@@ -13,23 +13,21 @@ class AssignGradeTeacherController extends Controller
     public function index()
     {
         $assignments = AssignGradeTeacher::select(
-            'users.id as empid',
+            'users.id as userId',
             'assign_grade_teachers.centerId',
             'assign_grade_teachers.id',
             'assign_grade_teachers.sdnumber',
-            'users.name',
+            'users.name as supervisor',
             'center.cname',
             'assign_grade_teachers.created_at',
-            'assign_grade_teachers.status'
+            'assign_grade_teachers.status',
         )
             ->join('center', 'assign_grade_teachers.centerId', '=', 'center.id')
             ->join('users', 'assign_grade_teachers.teacherid', '=', 'users.id')
             ->orderBy('users.name', 'asc')
             ->get();
 
-            dd($assignments);
-
-        return view('assign.assignTeacher');
+        return view('assign.assignTeacher', compact('assignments'));
     }
 
     /**
