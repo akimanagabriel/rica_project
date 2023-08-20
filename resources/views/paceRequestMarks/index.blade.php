@@ -38,24 +38,26 @@
     <div class="d-none" id="studentProgressResult">
         <div class="card mt-3">
             <div class="card-body">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>names</th>
-                            <th>reg number</th>
-                            <th>grade</th>
-                            <th>grade progress</th>
-                            <th>term progress</th>
-                            <th>current set/term</th>
-                            <th>results</th>
-                            <th>action</th>
-                        </tr>
-                    </thead>
-                    <tbody id="studentsResultsMarks">
+                <div class="table-responsive text-nowrap">
+                    <table class="table align-middle text-nowrap mb-0">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>names</th>
+                                <th>reg number</th>
+                                <th>grade</th>
+                                <th>grade progress</th>
+                                <th>term progress</th>
+                                <th>current set/term</th>
+                                <th>results</th>
+                                <th>action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="studentsResultsMarks">
 
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
@@ -122,6 +124,31 @@
                         <tr>
                             <td>${index+1}</td>
                             <td>${student.name}</td>
+                            <td>${student.regnumber}</td>
+                            <td>${student.grade}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <div>
+                                    <button class="btn btn-info btn-sm rounded-pill">result</button>
+                                    <button class="btn btn-primary btn-sm rounded-pill">report</button>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="dropdown">
+                                    <button class="btn btn-info btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                                        action
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <li><a class="dropdown-item" href="#">PACE Request</a></li>
+                                        <li><a class="dropdown-item" href="#">Other Course Marks</a></li>
+                                        <li><a class="dropdown-item" href="#">Displine Marks</a></li>
+                                        <li><a class="dropdown-item" href="#">Social Marks</a></li>
+                                        <li><a class="dropdown-item" href="#">Comment</a></li>
+                                    </ul>
+                                </div>
+                            </td>
                         </tr>
                         `
                         tbodyResult.append(tableRow)
