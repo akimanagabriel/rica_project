@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
-@section('title', 'learning center')
-@section('pageTitle', 'LEARNING CENTER LIST')
+@section('title', 'pace requests')
+@section('pageTitle', 'PACE REQUESTING/MARKS RECORDING')
 
 @section('content')
     <div class="product-list">
         <div class="card">
-            
+
         </div>
     </div>
     </div>

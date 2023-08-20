@@ -4,11 +4,11 @@ use App\Http\Controllers\AssignGradeTeacherController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\GradeCourseController;
 use App\Http\Controllers\LearningCenterController;
-use App\Http\Controllers\LocationController;
 use App\Http\Controllers\PaceRequestMarksController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 // guest middlewared routes
@@ -46,8 +46,8 @@ Route::middleware('auth')->prefix('dashboard')->group(function () {
     Route::get('/setting', [UserController::class, 'accountSetting'])->name("user.accountSetting");
 
     // suppervisor routes
-    Route::resource("/assign_LC", AssignGradeTeacherController::class)->names("assign");
+    Route::resource("/assign/LC", AssignGradeTeacherController::class)->names("assign");
 
     // pace request & marks
-    Route::get('/pacerequests_and_marks',[PaceRequestMarksController::class,"index"])->name('pace.requests.marks');
+    Route::get('/pace/requests',[PaceRequestMarksController::class,"index"])->name('pace.requests.marks');
 });

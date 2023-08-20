@@ -21,7 +21,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Blade::directive('currentPath', function () {
-            return '<?php echo str_replace("/", " > ", request()->path()); ?>';
+            $path = str_replace("/", " > ", request()->path());
+            $path = str_replace("_", " ", $path);
+            $path = ucwords($path);
+            return "<?php echo $path; ?>";
         });
     }
 }
