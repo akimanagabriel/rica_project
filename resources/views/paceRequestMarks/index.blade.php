@@ -35,7 +35,7 @@
     </div>
 
     {{-- student results --}}
-    <div id="studentProgressResult">
+    <div class="d-none" id="studentProgressResult">
         <div class="card mt-3">
             <div class="card-body">
                 <table>
@@ -52,7 +52,7 @@
                             <th>action</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="studentsResultsMarks">
 
                     </tbody>
                 </table>
@@ -64,6 +64,7 @@
         const gradeSelectElem = $("#gradesSelector")
         const centerSelectElem = $("#centerSelector")
         const studentProgressResult = $("#studentProgressResult")
+        const tbodyResult = $("tbody[id=studentsResultsMarks]")
 
         $(() => {
             getGradesInCenter(centerSelectElem.val())
@@ -103,6 +104,7 @@
                 } = await axios.get(url)
                 // console.log(data)
                 if (data.length === 0) {
+                    studentProgressResult.hide()
                     $.toast({
                         heading: 'Error',
                         text: 'No students found',
@@ -111,8 +113,23 @@
                         position: 'top-right',
                         hideAfter: 5000,
                     });
+                } else {
+                    studentProgressResult.removeClass("d-none")
+                    tbodyResult.html("")
+                    // loop through data
+                    data.forEach((student, index) => {
+                        const tableRow = `
+                        <tr>
+                            <td>${index+1}</td>
+                            <td>${student.name}</td>
+                        </tr>
+                        `
+                        tbodyResult.append(tableRow)
+                    })
+
                 }
             } catch (err) {
+                studentProgressResult.hide()
                 $.toast({
                     heading: 'Error',
                     text: err.message,
