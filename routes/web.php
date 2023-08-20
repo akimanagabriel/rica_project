@@ -49,5 +49,6 @@ Route::middleware('auth')->prefix('dashboard')->group(function () {
     Route::resource("/assign/LC", AssignGradeTeacherController::class)->names("assign");
 
     // pace request & marks
-    Route::get('/pace/requests',[PaceRequestMarksController::class,"index"])->name('pace.requests.marks');
+    Route::get('/pace/requests', [PaceRequestMarksController::class, "index"])->name('pace.requests.marks');
+    Route::get('/pace/students/progress', [PaceRequestMarksController::class, "studentProgress"])->name('pace.student.progress');
 });

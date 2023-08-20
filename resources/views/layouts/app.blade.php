@@ -98,7 +98,14 @@
                         {{-- header of each page --}}
                         <div class="my-2">
                             <div class="d-flex justify-content-between align-items-center">
-                                <h5 class="text-capitalize text-primary">@currentPath</h5>
+                                <h5 class="text-capitalize text-primary">
+                                    @php
+                                        $path = str_replace('/', ' > ', request()->path());
+                                        $path = str_replace('_', ' ', $path);
+                                        $path = ucwords($path);
+                                    @endphp
+                                    {{ $path }}
+                                </h5>
                                 <h6 class="text-uppercase">@yield('pageTitle')</h6>
                             </div>
                         </div>
@@ -162,6 +169,9 @@
     {{-- data tables --}}
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+
+    {{-- axios --}}
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
     <script>
         $('table').dataTable({
