@@ -101,7 +101,7 @@
                 const {
                     data
                 } = await axios.get(url)
-                console.log(data)
+                // console.log(data)
                 if (data.length === 0) {
                     $.toast({
                         heading: 'Error',
