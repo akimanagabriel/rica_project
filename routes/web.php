@@ -5,6 +5,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\GradeCourseController;
 use App\Http\Controllers\LearningCenterController;
 use App\Http\Controllers\LocationController;
+use App\Http\Controllers\PaceRequestMarksController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UserController;
@@ -46,4 +47,7 @@ Route::middleware('auth')->prefix('dashboard')->group(function () {
 
     // suppervisor routes
     Route::resource("/assign_LC", AssignGradeTeacherController::class)->names("assign");
+
+    // pace request & marks
+    Route::get('/pacerequests_and_marks',[PaceRequestMarksController::class,"index"])->name('pace.requests.marks');
 });

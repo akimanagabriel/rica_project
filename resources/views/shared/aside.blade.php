@@ -81,7 +81,7 @@
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="app-academy-course.html" class="menu-link">
+                        <a href="{{ route('pace.requests.marks') }}" class="menu-link">
                             <div data-i18n="Pace request & marks">Pace request & marks</div>
                         </a>
                     </li>
