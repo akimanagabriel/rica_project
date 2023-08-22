@@ -36,6 +36,10 @@
 
     {{-- student results --}}
     <div class="d-none" id="studentProgressResult">
+        {{-- grade scripture --}}
+        <div class="mt-3 d-flex justify-content-end">
+            <a class="btn btn-primary text-white">grade scripture</a>
+        </div>
         <div class="card mt-3">
             <div class="card-body">
                 <div class="table-responsive text-nowrap">
