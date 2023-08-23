@@ -38,7 +38,7 @@
     <div class="d-none" id="studentProgressResult">
         {{-- grade scripture --}}
         <div class="mt-3 d-flex justify-content-end">
-            <a class="btn btn-primary text-white">grade scripture</a>
+            <a class="btn btn-primary text-white" href="{{ route("scripture.show") }}" id="scriptureLink">grade scripture</a>
         </div>
         <div class="card mt-3">
             <div class="card-body">
@@ -124,6 +124,7 @@
                     tbodyResult.html("")
                     // loop through data
                     data.forEach((student, index) => {
+                        // assign link to scrptuture btn
                         const tableRow = `
                         <tr>
                             <td>${index+1}</td>

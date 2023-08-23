@@ -5,6 +5,7 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\GradeCourseController;
 use App\Http\Controllers\LearningCenterController;
 use App\Http\Controllers\PaceRequestMarksController;
+use App\Http\Controllers\ScriptureController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UserController;
@@ -51,4 +52,7 @@ Route::middleware('auth')->prefix('dashboard')->group(function () {
     // pace request & marks
     Route::get('/pace/requests', [PaceRequestMarksController::class, "index"])->name('pace.requests.marks');
     Route::get('/pace/students/progress', [PaceRequestMarksController::class, "studentProgress"])->name('pace.student.progress');
+
+    //scriptures
+    Route::resource("/greade/scriptures",ScriptureController::class)->names('scripture');
 });

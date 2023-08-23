@@ -11,7 +11,7 @@ class ScriptureController extends Controller
      */
     public function index()
     {
-        // 
+        return view('scripture.mainscriptures'); 
     }
 
     /**
