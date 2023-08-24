@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'pace requests')
-@section('pageTitle', 'PACE REQUESTING/MARKS RECORDING')
+@section('title', 'scriptures')
+@section('pageTitle', 'GRADE SCRIPTURE REGISTRATION')
 
 @section('content')
     <div class="card">
@@ -22,6 +22,5 @@
             </div>
         </div>
     </div>
-
 
 @endsection

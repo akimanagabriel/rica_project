@@ -32,23 +32,25 @@
     <!-- Core CSS -->
     <link class="template-customizer-core-css" href="{{ asset('assets/vendor/css/rtl/core.css') }}" rel="stylesheet" />
     <link class="template-customizer-theme-css" href="{{ asset('assets/vendor/css/rtl/theme-default.css') }}"
-        rel="stylesheet" />
+    rel="stylesheet" />
     <link href="{{ asset('assets/css/demo.css') }}" rel="stylesheet" />
-
+    
     <!-- Vendors CSS -->
     <link href="{{ asset('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets/vendor/libs/typeahead-js/typeahead.css') }}" rel="stylesheet" />
     <link href="{{ asset('assets/vendor/libs/apex-charts/apex-charts.css') }}" rel="stylesheet" />
 
     {{-- data tables --}}
-    <link href="../../assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css" rel="stylesheet" />
-    <link href="../../assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css" rel="stylesheet" />
-    <link href="../../assets/vendor/libs/datatables-checkboxes-jquery/datatables.checkboxes.css" rel="stylesheet" />
-    <link href="../../assets/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css" rel="stylesheet" />
-
+    <link href="{{ asset('assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css" rel="stylesheet') }}" />
+    <link
+    href="{{ asset('assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css" rel="stylesheet') }}" />
+    <link
+    href="{{ asset('assets/vendor/libs/datatables-checkboxes-jquery/datatables.checkboxes.css" rel="stylesheet') }}" />
+    <link href="{{ asset('assets/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css" rel="stylesheet') }}" />
+    
     <!-- Page CSS -->
     <link href="{{ asset('assets/vendor/css/pages/dashboards-crm.css') }}" rel="stylesheet" />
-
+    
     <!-- Helpers -->
     <script src="{{ asset('assets/vendor/js/helpers.js') }}"></script>
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
@@ -56,23 +58,23 @@
     <script src="{{ asset('assets/vendor/js/template-customizer.js') }}"></script>
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="{{ asset('assets/js/config.js') }}"></script>
-
+    
     {{-- data tables --}}
     <link href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css" rel="stylesheet" />
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-
+    
+    
     {{-- data tables --}}
     <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet">
-
+    
     {{-- toast --}}
     <link href="{{ asset('assets/vendor/libs/toastr/toastr.css') }}" rel="stylesheet">
-
-
+    
+    
     <!-- Select2 CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.1.0/css/select2.min.css" rel="stylesheet">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    
 </head>
 
 <body>

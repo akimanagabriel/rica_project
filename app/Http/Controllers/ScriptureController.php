@@ -35,7 +35,7 @@ class ScriptureController extends Controller
      */
     public function show(string $id)
     {
-        //
+        
     }
 
     /**

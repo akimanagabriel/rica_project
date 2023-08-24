@@ -37,8 +37,8 @@
     {{-- student results --}}
     <div class="d-none" id="studentProgressResult">
         {{-- grade scripture --}}
-        <div class="mt-3 d-flex justify-content-end">
-            <a class="btn btn-primary text-white" href="{{ route("scripture.show") }}" id="scriptureLink">grade scripture</a>
+        <div class="mt-3 d-flex justify-content-end" id="scriptureBtn">
+            <a class="btn btn-primary text-white" href="{{ route("scripture.index") }}" id="scriptureLink">grade scripture</a>
         </div>
         <div class="card mt-3">
             <div class="card-body">
@@ -76,6 +76,8 @@
             getGradesInCenter(centerSelectElem.val())
         })
 
+        
+
         centerSelectElem.change((e) => {
             gradeSelectElem.html("")
             getGradesInCenter(e.target.value)
@@ -93,6 +95,7 @@
                     $("button[type=submit]").attr('disabled', false)
                     gradeSelectElem.attr('disabled', false)
                 });
+                
             } else {
                 gradeSelectElem.html(`<option disabled selected value="">No data found</option>`)
                 $("button[type=submit]").attr('disabled', true)
