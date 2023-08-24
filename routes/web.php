@@ -7,6 +7,7 @@ use App\Http\Controllers\LearningCenterController;
 use App\Http\Controllers\PaceRequestMarksController;
 use App\Http\Controllers\ScriptureController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\StudentResultController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
@@ -54,5 +55,10 @@ Route::middleware('auth')->prefix('dashboard')->group(function () {
     Route::get('/pace/students/progress', [PaceRequestMarksController::class, "studentProgress"])->name('pace.student.progress');
 
     //scriptures
-    Route::resource("/greade/scriptures",ScriptureController::class)->names('scripture');
+    Route::resource("/greade/scriptures", ScriptureController::class)->names('scripture');
+
+    // student results
+    Route::get('results/studentCard', [StudentResultController::class, "results"])->name('student.results');
+    Route::post('student/profile', [StudentResultController::class, "profile"])->name('student.profile');
+    Route::get('results/inGrades', [StudentResultController::class, "getStudents"])->name('student.ingrade');
 });
