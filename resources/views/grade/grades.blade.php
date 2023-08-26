@@ -44,8 +44,8 @@
                                     <td>
                                         <ul type="square" class="d-flex flex-column gap-2">
                                             @if (count($gcourses) > 0)
-                                                
-                                            
+
+
                                             @php
                                                 $i = 0;
                                             @endphp

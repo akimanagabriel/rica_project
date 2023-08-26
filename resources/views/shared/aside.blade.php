@@ -106,7 +106,7 @@
 
                 <ul class="menu-sub">
                     <li class="menu-item">
-                        <a class="menu-link" href="app-academy-dashboard.html">
+                        <a class="menu-link {{ Request::routeIs('grad.index') ? 'active' : '' }}" href="{{ route('grad.index') }}">
                             <div data-i18n="Pace">Pace</div>
                         </a>
                     </li>

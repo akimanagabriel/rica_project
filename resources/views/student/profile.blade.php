@@ -96,29 +96,36 @@
                     <div class="tab-content" id="myTabContent">
                         <div aria-labelledby="slip-tab" class="tab-pane fade show active" id="slip" role="tabpanel">
                             <div class="table-responsive text-nowrap">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>grade</th>
-                                            <th>academic year</th>
-                                            <th>set number</th>
-                                            <th>action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>01</td>
-                                            <td>grade</td>
-                                            <td>academic year</td>
-                                            <td>set number</td>
-                                            <td>
-                                                <button class="btn btn-primary btn-info btn-sm">view</button>
-                                                <button class="btn btn-info btn-info btn-sm">print</button>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                @if ($slipData)
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>grade</th>
+                                                <th>academic year</th>
+                                                <th>set number</th>
+                                                <th>action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($slipData as $slip)
+                                                <tr>
+                                                    <td>{{ str_pad($loop->index + 1, 2, 0, STR_PAD_LEFT) }}</td>
+                                                    <td>GRADE-{{ $slip->grade }}</td>
+                                                    <td>{{ $slip->year }}</td>
+                                                    <td>{{ $slip->setnumber }}</td>
+                                                    <td>
+                                                        <button class="btn btn-primary btn-info btn-sm">view</button>
+                                                        <button class="btn btn-info btn-info btn-sm">print</button>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                @else
+                                    <div class="alert alert-info">No data found</div>
+                                @endif
+
                             </div>
                         </div>
 

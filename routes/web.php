@@ -1,17 +1,18 @@
 <?php
 
-use App\Http\Controllers\AssignGradeTeacherController;
-use App\Http\Controllers\CourseController;
-use App\Http\Controllers\GradeCourseController;
-use App\Http\Controllers\LearningCenterController;
-use App\Http\Controllers\PaceRequestMarksController;
-use App\Http\Controllers\ScriptureController;
-use App\Http\Controllers\StudentController;
-use App\Http\Controllers\StudentResultController;
-use App\Http\Controllers\SupplierController;
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GradController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\CourseController;
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\ScriptureController;
+use App\Http\Controllers\GradeCourseController;
+use App\Http\Controllers\StudentResultController;
+use App\Http\Controllers\LearningCenterController;
+use App\Http\Controllers\PaceRequestMarksController;
+use App\Http\Controllers\AssignGradeTeacherController;
 
 // guest middlewared routes
 Route::middleware('guest')->group(function () {
@@ -35,6 +36,7 @@ Route::middleware('auth')->prefix('dashboard')->group(function () {
     Route::resource('/subject', CourseController::class);
     // courses
     Route::resource('/grade', GradeCourseController::class);
+
 
     // learning center
     Route::resource('/learning_center', LearningCenterController::class)->names('learning');
@@ -61,4 +63,7 @@ Route::middleware('auth')->prefix('dashboard')->group(function () {
     Route::get('results/studentCard', [StudentResultController::class, "results"])->name('student.results');
     Route::post('student/profile', [StudentResultController::class, "profile"])->name('student.profile');
     Route::get('results/inGrades', [StudentResultController::class, "getStudents"])->name('student.ingrade');
+    Route::get('/grad', [GradController::class, 'index'])->name('grad.index');
+    Route::get('/paceview{id}', [GradController::class, 'viewpace'])->name('pace.viewpace');
+
 });

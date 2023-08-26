@@ -6,6 +6,7 @@ use App\Models\Center;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Grad;
+use App\Models\PromotionSet;
 use App\Models\Student;
 use Exception;
 
@@ -19,9 +20,12 @@ class StudentResultController extends Controller
 
     public function profile(Request $request)
     {
+
         $student = Student::where('id', $request->studentId)->get()[0];
-        // dd($student);
-        return view('student.profile', compact('student'));
+        // CONGRATULATION SLIP
+        $slipData = PromotionSet::where("stid",$request->studentId)->get();
+        
+        return view('student.profile', compact('student', 'slipData'));
     }
 
     public function getStudents(Request $request)
