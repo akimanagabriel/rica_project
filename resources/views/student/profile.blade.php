@@ -15,21 +15,24 @@
         <div aria-hidden="true" aria-labelledby="exampleModalLabel" class="modal fade" id="uploadModal" tabindex="-1">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form action="" enctype="multipart/form-data" method="post">
+                    <form action="{{ route('student.profilePicture') }}" enctype="multipart/form-data" method="post">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">UPLOAD PROFILE PICTURE</h5>
                             <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
                         </div>
                         <div class="modal-body">
+                            @csrf
                             {{-- file picker --}}
                             <div class="mb-3">
                                 <label class="form-label" for="formFile">Profile picture</label>
-                                <input class="form-control" id="formFile" type="file">
+                                <input class="form-control" id="formFile" name="profilePicture" type="file">
+                                <input class="form-control" name="studentId" name="profilePicture" type="hidden"
+                                    value="{{ $student->id }}">
                             </div>
                         </div>
                         <div class="modal-footer">
                             <button class="btn btn-secondary" data-bs-dismiss="modal" type="button">cancel</button>
-                            <button class="btn btn-primary" type="button"><span class="mdi mdi-upload-outline"></span>
+                            <button class="btn btn-primary" type="submit"><span class="mdi mdi-upload-outline"></span>
                                 upload</button>
                         </div>
                     </form>

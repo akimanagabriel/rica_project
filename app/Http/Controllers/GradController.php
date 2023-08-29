@@ -15,6 +15,7 @@ class GradController extends Controller
 
         return view('pace.index', compact('grad'));
     }
+   
     public function viewpace($id)
     {
     $results = DB::table('pace')
@@ -31,6 +32,10 @@ class GradController extends Controller
   
 
         return view('pace.pacelist', compact('results','grad','subjects'));
+    }
+
+    public function update(Request $request, $id) {
+        dd($request->all());
     }
 
 }

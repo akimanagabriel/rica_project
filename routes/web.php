@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GradController;
@@ -13,6 +14,7 @@ use App\Http\Controllers\StudentResultController;
 use App\Http\Controllers\LearningCenterController;
 use App\Http\Controllers\PaceRequestMarksController;
 use App\Http\Controllers\AssignGradeTeacherController;
+use App\Http\Controllers\FileUploadController;
 
 // guest middlewared routes
 Route::middleware('guest')->group(function () {
@@ -66,4 +68,6 @@ Route::middleware('auth')->prefix('dashboard')->group(function () {
     Route::get('/grad', [GradController::class, 'index'])->name('grad.index');
     Route::get('/paceview{id}', [GradController::class, 'viewpace'])->name('pace.viewpace');
 
+    Route::post('profile/upload', [FileUploadController::class,'uploadProfilePicture'])->name('student.profilePicture');
+    
 });
