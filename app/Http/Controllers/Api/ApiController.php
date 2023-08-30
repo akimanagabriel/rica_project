@@ -17,6 +17,7 @@ class ApiController extends Controller
 
     public function getGradesFromLc($centerId)
     {
+        $centerId = decrypt($centerId);
         $grades = $grades = Grad::whereIn('id', function ($query) use ($centerId) {
             $query->select('graid')->from('leaningcenter')->where('cid', $centerId);
         })->get();
