@@ -6,6 +6,7 @@ use App\Models\Center;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Grad;
 
 class PaceRequestMarksController extends Controller
 {
@@ -15,13 +16,11 @@ class PaceRequestMarksController extends Controller
         return view('paceRequestMarks.index', compact('centers'));
     }
 
-    // public function studentProgress(Request $request)
-    // {
-    //     $centers = Center::select('id', "cname")->distinct()->get();
-    //     $studentsResults = Student::where('grade', $request->gradeId)->orderBy('name')->get();
-    //     return view('paceRequestMarks.index', compact(
-    //         "centers",
-    //         "studentsResults"
-    //     ));
-    // }
+    public function studentProgress(Request $request)
+    {
+        $grade = Grad::find($request->gradeId);
+        $students = Student::where('grade', $grade->id)->get();
+        $centers = Center::select('id', "cname")->distinct()->get();
+        return view('paceRequestMarks.index', compact("centers",""));
+    }
 }
