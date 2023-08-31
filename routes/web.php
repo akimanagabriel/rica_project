@@ -56,7 +56,8 @@ Route::middleware('auth')->prefix('dashboard')->group(function () {
 
     // pace request & marks
     Route::get('/pace/requests', [PaceRequestMarksController::class, "index"])->name('pace.requests.marks');
-    // Route::post('/students-progress', [PaceRequestMarksController::class, "studentProgress"])->name('pace.student.progress');
+    Route::get('/pacereport', [PaceRequestMarksController::class, "pacereport"])->name('pace.report');
+    Route::post('/sendreport', [PaceRequestMarksController::class, "sendReport"])->name('pace.sendReport');
 
     //scriptures
     Route::resource("/greade/scriptures", ScriptureController::class)->names('scripture');

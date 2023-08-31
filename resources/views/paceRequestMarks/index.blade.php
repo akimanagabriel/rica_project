@@ -70,36 +70,48 @@
                                     @php
                                         $stid = $student->id;
                                         $year = $student->year;
+
                                         $curentset = PaceRequest::where('stid', $stid)
-                                            ->where('gradeid', $grade)
+                                            ->where('gradeid', $grade->id)
                                             ->where('year', $year)
                                             ->where('status', '>=', 3)
                                             ->max('setnumber');
-                                        
                                         $curentset =  $curentset ?? 0;
+
+                                        $curenttemsResult = DB::table('pecerequest')
+                                            ->where('stid', $stid)
+                                            ->where('gradeid', $grade->id)
+                                            ->where('year', $year)
+                                            ->where('status', '>=', 3)
+                                            ->max('term');
+
+                                        // Extract the 'tems' value from the result
+                                        $curenttems = $curenttemsResult ?? 0;
+                                        // dd($grade);
+                                        
                                         
                                         $totalpace = PaceRequest::where('stid', $stid)
-                                            ->where('gradeid', $grade)
+                                            ->where('gradeid', $grade->id)
                                             ->where('year', $year)
                                             ->where('status', '>=', 3)
                                             ->count();
                                         
                                         $totalone = PaceRequest::where('stid', $stid)
-                                            ->where('gradeid', $grade)
+                                            ->where('gradeid', $grade->id)
                                             ->where('year', $year)
                                             ->where('status', '>=', 3)
                                             ->where('term', 1)
                                             ->count();
                                         
                                         $totaltwo = PaceRequest::where('stid', $stid)
-                                            ->where('gradeid', $grade)
+                                            ->where('gradeid', $grade->id)
                                             ->where('year', $year)
                                             ->where('status', '>=', 3)
                                             ->where('term', 2)
                                             ->count();
                                         
                                         $totalthree = PaceRequest::where('stid', $stid)
-                                            ->where('gradeid', $grade)
+                                            ->where('gradeid', $grade->id)
                                             ->where('year', $year)
                                             ->where('status', '>=', 3)
                                             ->where('term', 3)
@@ -224,13 +236,19 @@
                                         <td>
                                             {{ "S: " }}
                                             {{ $curentset }}
-                                            {{ "<br>" }}
+                                            <br>
                                             {{ "T: " }}
-                                            {{-- {{ $curenttems }} --}}
+                                            {{ $curenttems }}
                                         </td>
                                         <td>
-                                            <div>
-                                                <button class="btn btn-info btn-sm rounded-pill">result</button>
+                                            <div class="d-flex gap-2">
+                                                <form action="{{ route('pace.report') }}" method="get">
+                                                    <input type="hidden" name="current" value="{{ $curentset }}">
+                                                    <input type="hidden" name="student" value="{{ encrypt($student->id) }}">
+                                                    <input type="hidden" name="grade" value="{{ $student->grade }}">
+                                                    <input type="hidden" name="year" value="{{ $student->year }}">
+                                                    <button type="submit" class="btn btn-info btn-sm rounded-pill">result</button>
+                                                </form>
                                                 <button class="btn btn-primary btn-sm rounded-pill">report</button>
                                             </div>
                                         </td>
@@ -269,8 +287,6 @@
             getGradesInCenter(centerSelectElem.val())
         })
 
-
-
         centerSelectElem.change((e) => {
             gradeSelectElem.html("")
             getGradesInCenter(e.target.value)
@@ -296,49 +312,5 @@
             }
         }
 
-        // retrieve all students from a selected grade
-        // $("button[type=submit]").click(async (e) => {
-        //     e.preventDefault()
-        //     try {
-        //         const url = `/api/studentsProgress/${gradeSelectElem.val()}`
-        //         const {
-        //             data
-        //         } = await axios.get(url)
-        //         // console.log(data)
-        //         if (data.length === 0) {
-        //             studentProgressResult.hide()
-        //             $.toast({
-        //                 heading: 'Error',
-        //                 text: 'No students found',
-        //                 showHideTransition: 'fade',
-        //                 icon: 'error',
-        //                 position: 'top-right',
-        //                 hideAfter: 5000,
-        //             });
-        //         } else {
-        //             studentProgressResult.removeClass("d-none")
-        //             tbodyResult.html("")
-        //             // loop through data
-        //             data.forEach((student, index) => {
-        //                 // assign link to scrptuture btn
-        //                 const tableRow = `
-
-    //                 `
-        //                 tbodyResult.append(tableRow)
-        //             })
-
-        //         }
-        //     } catch (err) {
-        //         studentProgressResult.hide()
-        //         $.toast({
-        //             heading: 'Error',
-        //             text: err.message,
-        //             showHideTransition: 'fade',
-        //             icon: 'error',
-        //             position: 'top-right',
-        //             hideAfter: 5000,
-        //         });
-        //     }
-        // })
     </script>
 @endsection
