@@ -30,7 +30,6 @@ class GradController extends Controller
     $grad=Grad::where('id',decrypt($id))->get();
     $subjects=Course::all();
   
-
         return view('pace.pacelist', compact('results','grad','subjects'));
     }
 
