@@ -110,6 +110,7 @@
             </div>
         </div>
     </div>
+    
     {{-- auto assign pace number to related hidden input field --}}
     <script>
         function setSetNumber(setNumber) {
