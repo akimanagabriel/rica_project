@@ -9,7 +9,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Grad;
 use App\Models\PaceRequest;
 use App\Models\PromotionSet;
-use Illuminate\Support\Facades\Auth;
 
 class PaceRequestMarksController extends Controller
 {
@@ -24,7 +23,6 @@ class PaceRequestMarksController extends Controller
         $students = Student::where('grade', $grade->id)->get();
         return view('paceRequestMarks.index', compact("centers", "students", "grade"));
     }
-
 
     public function pacereport(Request $request)
     {
@@ -42,7 +40,6 @@ class PaceRequestMarksController extends Controller
         // Return the view with necessary data
         return view('paceRequestMarks.paceReport', compact("setInfo", "current"));
     }
-
 
     public function sendReport(Request $requestData)
     {
