@@ -12,8 +12,7 @@ use App\Models\PromotionSet;
 
 class PaceRequestMarksController extends Controller
 {
-    public function index(Request $request)
-    {
+    public function index(Request $request){
         $centers = Center::select('id', "cname")->distinct()->get();
         $grade = Grad::find($request->gradeId);
         if (!$grade) {
