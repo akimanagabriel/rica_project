@@ -99,8 +99,8 @@
                     <main class="container-fluid">
                         {{-- header of each page --}}
                         <div class="my-2">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <h5 class="text-capitalize text-primary">
+                            <div class="d-flex flex-column justify-content-between align-items-start">
+                                <h6 class="text-capitalize text-primary">
                                     @php
                                         $path = str_replace('/', ' > ', request()->path());
                                         $path = str_replace('_', ' ', $path);
@@ -122,11 +122,8 @@
                                     @endphp
                                     {{ $path }}
                                     {{-- validate path length --}}
-
-
-
-                                </h5>
-                                <h6 class="text-uppercase">@yield('pageTitle')</h6>
+                                </h6>
+                                <h5 class="text-uppercase">@yield('pageTitle')</h5>
                             </div>
                         </div>
 
