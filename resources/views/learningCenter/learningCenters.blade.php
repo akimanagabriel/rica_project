@@ -7,7 +7,7 @@
     use App\Models\Center;
     use App\Models\Grad;
     use App\Models\LearningCenter;
-    
+
 @endphp
 
 @section('content')
@@ -15,8 +15,7 @@
         <div class="card">
             <div class="card-body p-3">
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h4 class="mb-0">LEARNING CENTER LIST</h4>
-                    <div class="d-flex align-items-center">
+                   <div class="d-flex align-items-center">
 
                         <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#newLearningCenter"
                             class="btn btn-outline-primary flex-1 me-2">New Learning Center</a>
@@ -65,7 +64,8 @@
                         </div>
                         <!--/ Edit User Modal -->
                     </div>
-                </div>
+                </div>       <h4 class="mb-0">LEARNING CENTER LIST</h4>
+
                 <table id="datatable" class="table align-middle text-nowrap mb-0" style="width: 100%">
                     <thead>
                         <tr>

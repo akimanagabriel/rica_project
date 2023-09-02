@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Grad;
 use App\Models\Center;
 use App\Models\Student;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Models\Grad;
 use App\Models\PaceRequest;
 use App\Models\PromotionSet;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 
 class PaceRequestMarksController extends Controller
 {
@@ -21,6 +22,21 @@ class PaceRequestMarksController extends Controller
 
         $students = Student::where('grade', $grade->id)->get();
         return view('paceRequestMarks.index', compact("centers", "students", "grade"));
+    }
+    public function index1($id,$grade,$year){
+
+        $results = DB::table('pecerequest')
+            ->where('stid', decrypt($id))
+            ->where('gradeid', decrypt($grade))
+            ->where('year', decrypt($year))
+            ->orderBy('setnumber', 'ASC')
+            ->orderBy('paceid', 'ASC')
+            ->get();
+
+      $students = Student::where('id', decrypt($id))->get();
+      $grade=decrypt($grade);
+      $id=decrypt($id);
+        return view('paceRequestMarks.studentpacerequest', compact("results","students","year","grade","id"));
     }
 
     public function pacereport(Request $request)

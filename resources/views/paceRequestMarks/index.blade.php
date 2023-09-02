@@ -88,35 +88,35 @@
                                         // Extract the 'tems' value from the result
                                         $curenttems = $curenttemsResult ?? 0;
                                         // dd($grade);
-                                        
-                                        
+
+
                                         $totalpace = PaceRequest::where('stid', $stid)
                                             ->where('gradeid', $grade->id)
                                             ->where('year', $year)
                                             ->where('status', '>=', 3)
                                             ->count();
-                                        
+
                                         $totalone = PaceRequest::where('stid', $stid)
                                             ->where('gradeid', $grade->id)
                                             ->where('year', $year)
                                             ->where('status', '>=', 3)
                                             ->where('term', 1)
                                             ->count();
-                                        
+
                                         $totaltwo = PaceRequest::where('stid', $stid)
                                             ->where('gradeid', $grade->id)
                                             ->where('year', $year)
                                             ->where('status', '>=', 3)
                                             ->where('term', 2)
                                             ->count();
-                                        
+
                                         $totalthree = PaceRequest::where('stid', $stid)
                                             ->where('gradeid', $grade->id)
                                             ->where('year', $year)
                                             ->where('status', '>=', 3)
                                             ->where('term', 3)
                                             ->count();
-                                        
+
                                         // calculation
                                         if ($totalpace <= 72) {
                                             $performance = (100 / 72) * $totalpace;
@@ -144,51 +144,51 @@
                                             $progtwo = (100 / 32) * $totaltwo;
                                             $progthree = (100 / 32) * $totalthree;
                                         }
-                                        
+
                                         // colors management
                                         if($performance>75) {
-                                                $color ='bg-success'; 
+                                                $color ='bg-success';
                                             }else if($performance<75   && $performance>50){
-                                                $color ='bg-info'; 
+                                                $color ='bg-info';
                                             }else if($performance<50   && $performance>25){
-                                                $color ='bg-warning'; 
+                                                $color ='bg-warning';
                                             }else {
 
-                                                $color ='bg-danger'; 
+                                                $color ='bg-danger';
                                             }
 
 
                                             if($progone>75){
-                                                $colorone ='bg-success'; 
+                                                $colorone ='bg-success';
                                             }else if($progone<75   && $progone>50){
-                                                $colorone ='bg-info'; 
+                                                $colorone ='bg-info';
                                             }else if($progone<50   && $progone>25){
-                                                $colorone ='bg-warning'; 
+                                                $colorone ='bg-warning';
                                             }else{
-                                                $colorone ='bg-danger'; 
+                                                $colorone ='bg-danger';
                                             }
 
 
                                             if($progtwo>75){
-                                                $colortwo ='bg-success'; 
+                                                $colortwo ='bg-success';
                                             }else if($progtwo<75   && $progtwo>50){
-                                                $colortwo ='bg-info'; 
+                                                $colortwo ='bg-info';
                                             }else if($progtwo<50   && $progtwo>25){
-                                                $colortwo ='bg-warning'; 
+                                                $colortwo ='bg-warning';
                                             }else{
-                                                $colortwo ='bg-danger'; 
+                                                $colortwo ='bg-danger';
                                             }
-                                            
+
                                             if($progthree>75){
-                                                $colorthree='bg-success'; 
+                                                $colorthree='bg-success';
                                             }else if($progthree<75   && $progthree>50){
-                                                $colorthree='bg-info'; 
+                                                $colorthree='bg-info';
                                             }else if($progthree<50   && $progthree>25){
-                                                $colorthree ='bg-warning'; 
+                                                $colorthree ='bg-warning';
                                             }else{
-                                                $colorthree ='bg-danger'; 
+                                                $colorthree ='bg-danger';
                                             }
-                                        
+
                                     @endphp
                                     <tr>
                                         <td>{{ str_pad($loop->index + 1, 2, 0, STR_PAD_LEFT) }}</td>
@@ -205,7 +205,7 @@
                                                      aria-valuemax="100">{{ number_format($performance, 1) }}%
                                                 </div>
                                             </div>
-                                            
+
                                         </td>
                                         <td>
                                             <div class="progress">
@@ -231,7 +231,7 @@
                                                      aria-valuemin="0"
                                                      aria-valuemax="100">{{ number_format($progthree, 1) }}%</div>
                                             </div>
-                                            
+
                                         </td>
                                         <td>
                                             {{ "S: " }}
@@ -259,7 +259,7 @@
                                                     action
                                                 </button>
                                                 <ul aria-labelledby="dropdownMenuButton" class="dropdown-menu">
-                                                    <li><a class="dropdown-item" href="#">PACE Request</a></li>
+                                                    <li><a class="dropdown-item" href="{{ route('pace.requests.viewstudent', ['id' => encrypt($student->id),'grade'=> encrypt($student->grade),'year' => encrypt($student->year)]) }}">PACE Request</a></li>
                                                     <li><a class="dropdown-item" href="#">Other Course Marks</a></li>
                                                     <li><a class="dropdown-item" href="#">Displine Marks</a></li>
                                                     <li><a class="dropdown-item" href="#">Social Marks</a></li>
