@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GradController;
@@ -56,7 +55,7 @@ Route::middleware('auth')->prefix('dashboard')->group(function () {
 
     // pace request & marks
     Route::get('/pace/requests', [PaceRequestMarksController::class, "index"])->name('pace.requests.marks');
-    Route::get('/ViewStudent{id}-{grade}-{year}', [PaceRequestMarksController::class, "index1"])->name('pace.requests.viewstudent');
+    Route::get('/pacerequestbystudent{id}-{grade}-{year}', [PaceRequestMarksController::class, "paceRequestByStudent"])->name('pace.requests.viewstudent');
     Route::get('/pacereport', [PaceRequestMarksController::class, "pacereport"])->name('pace.report');
     Route::post('/sendreport', [PaceRequestMarksController::class, "sendReport"])->name('pace.sendReport');
 
@@ -74,3 +73,10 @@ Route::middleware('auth')->prefix('dashboard')->group(function () {
     Route::post('profile/upload', [FileUploadController::class,'uploadProfilePicture'])->name('student.profilePicture');
 
 });
+
+
+
+
+// sample routes
+
+// Route::resource('user', UserController::class);

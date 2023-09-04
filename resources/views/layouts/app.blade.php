@@ -195,6 +195,8 @@
             paginate: true,
         });
 
+        $('.no-data-table').DataTable().destroy();
+
         $(".select2").select2();
     </script>
 

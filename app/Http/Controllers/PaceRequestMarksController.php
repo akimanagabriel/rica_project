@@ -23,8 +23,8 @@ class PaceRequestMarksController extends Controller
         $students = Student::where('grade', $grade->id)->get();
         return view('paceRequestMarks.index', compact("centers", "students", "grade"));
     }
-    public function index1($id,$grade,$year){
 
+    public function paceRequestByStudent($id,$grade,$year){
         $results = DB::table('pecerequest')
             ->where('stid', decrypt($id))
             ->where('gradeid', decrypt($grade))
@@ -38,6 +38,7 @@ class PaceRequestMarksController extends Controller
       $id=decrypt($id);
         return view('paceRequestMarks.studentpacerequest', compact("results","students","year","grade","id"));
     }
+
 
     public function pacereport(Request $request)
     {
